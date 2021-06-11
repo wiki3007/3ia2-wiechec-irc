@@ -53,7 +53,7 @@ app.post("/newMessage", function (req, res) {
         for (let i = 0; i < messageArray.length; i++) {
             messageArray[i].json({
                 content: req.body.message,
-                time: new Date().toLocaleTimeString().split(" ")[0],
+                time: new Date().toTimeString().split(" ")[0],
                 author: req.session.user.username,
                 color: req.session.user.color
             })
