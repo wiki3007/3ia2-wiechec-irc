@@ -44,20 +44,12 @@ function createMessage(message) {
     document.getElementById("chatWindow").appendChild(divContainer);
 }
 
-function messageLongPooling() {
-    fetch("/message")
-        .then((response) => response.json())
-        .then((data) => {
-            createMessage(data);
-            messageLongPooling();
-        })
-    /*
+async function messageLongPooling() {
     let response=await fetch("/message")
-    let data=await response.text()
+    let data=await response.json();
+    console.log(data);
     createMessage(data);
     messageLongPooling()
-    */
-
 }
 
 function sendMessage() {
