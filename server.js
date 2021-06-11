@@ -53,7 +53,7 @@ app.post("/newMessage", function (req, res) {
         for (let i = 0; i < messageArray.length; i++) {
             messageArray[i].json({
                 content: req.body.message,
-                time: new Date().toTimeString().split(" ")[0],
+                time: new Date().toLocaleTimeString().split(" ")[0],
                 author: req.session.user.username,
                 color: req.session.user.color
             })
@@ -61,6 +61,19 @@ app.post("/newMessage", function (req, res) {
         messageArray = [];
         res.sendStatus(200);
     }
+   /*
+   if(req.body.message.toString().startsWith("/")){
+       if(req.body.message.toString().startsWith("/color")){
+        req.session.user.color = "#" + Math.floor(Math.random() * 16777215).toString(16);
+        res.sendStatus(200);
+       }
+       else if (req.body.message.toString().startsWith("/nick")) {
+        req.session.user.username = req.body.message
+            .toString()
+            .substring(5, req.body.message.toString().length);
+        res.sendStatus(200);
+    }
+   }*/
 })
 
 app.listen(PORT, function () {

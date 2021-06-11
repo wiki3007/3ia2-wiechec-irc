@@ -29,6 +29,7 @@ function createMessage(message) {
                 break;
             case 1:
                 readyMessage.innerText = `<@${[message.author]}>`;
+                readyMessage.style.color=message.color;
                 break;
             case 2:
                 readyMessage.innerText = `${[message.content]}`;
@@ -50,6 +51,13 @@ function messageLongPooling() {
             createMessage(data);
             messageLongPooling();
         })
+    /*
+    let response=await fetch("/message")
+    let data=await response.text()
+    createMessage(data);
+    messageLongPooling()
+    */
+
 }
 
 function sendMessage() {
@@ -74,8 +82,9 @@ function sendMessage() {
 
 window.addEventListener("DOMContentLoaded", () => {
     document.querySelector("button").addEventListener("click", sendMessage);
-    window.addEventListener("keydown", (e) => {
-        if (e.key == 13) {
+    window.addEventListener("keyup", (e) => {
+        if (e.keyCode == 13) {
+            e.preventDefault();
             sendMessage();
         }
     });
