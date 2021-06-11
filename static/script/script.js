@@ -74,7 +74,7 @@ function sendMessage() {
 
 window.addEventListener("DOMContentLoaded", () => {
     document.querySelector("button").addEventListener("click", sendMessage);
-    window.addEventListener("keyup", (e) => {
+    window.addEventListener("keydown", (e) => {
         if (e.keyCode == 13) {
             e.preventDefault();
             sendMessage();
