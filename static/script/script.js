@@ -65,7 +65,7 @@ function sendMessage() {
     if (newMessage == "/quit") {
         window.location.reload();
     }
-    else if (newMessage.length == 0) {
+    else if (newMessage=="") {
         return;
     }
     fetch("/newMessage", {
